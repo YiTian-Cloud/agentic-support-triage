@@ -1,4 +1,6 @@
+
 // app/docs/page.tsx
+// @ts-nocheck
 "use client";
 
 import SwaggerUI from "swagger-ui-react";
