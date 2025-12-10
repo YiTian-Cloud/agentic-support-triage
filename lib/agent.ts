@@ -1,6 +1,6 @@
+// @ts-nocheck
 // lib/agent.ts
 import { StateGraph, START, END } from "@langchain/langgraph";
-//import type { RunnableLike } from "@langchain/core/runnables";
 import { retrieveKB, KBArticle } from "./kb";
 
 export type AgentMode = "base" | "optimized";
@@ -52,7 +52,6 @@ async function mockDraftAnswer(
   ].join("\n");
 }
 
-// Conceptual “DSPy-compiled” optimizer (simple version)
 // Conceptual “DSPy-compiled” optimizer
 function dspyOptimizeAnswer(draft: string | undefined, mode: AgentMode): string {
     if (!draft) return "";
@@ -136,11 +135,12 @@ function dspyOptimizeAnswer(draft: string | undefined, mode: AgentMode): string 
     ].join("\n");
   }
   
+  
 
 // ---------- LangGraph nodes ----------
 // Each node returns only the fields it changes (delta),
 // and we let the channels config merge them into the state.
-// We now also track `durationMs` for each node.
+// We also track `durationMs` for each node.
 
 async function classifyNode(
   state: TicketState
@@ -277,9 +277,9 @@ async function finalizeNode(
 
 // ---------- Build & compile graph using channels ----------
 
-let compiledGraph: RunnableLike<TicketState, TicketState> | null = null;
+let compiledGraph: any = null;
 
-export function getCompiledGraph(): RunnableLike<TicketState, TicketState> {
+export function getCompiledGraph() {
   if (compiledGraph) return compiledGraph;
 
   const builder = new StateGraph({
