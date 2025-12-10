@@ -1,6 +1,6 @@
 // lib/agent.ts
 import { StateGraph, START, END } from "@langchain/langgraph";
-import type { RunnableLike } from "@langchain/core/runnables";
+//import type { RunnableLike } from "@langchain/core/runnables";
 import { retrieveKB, KBArticle } from "./kb";
 
 export type AgentMode = "base" | "optimized";
